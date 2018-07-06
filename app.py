@@ -25,6 +25,8 @@ def index():
 def about():
 	return	render_template('about.html')
 
+
+
 @app.route('/post/<int:post_id>')
 def post(post_id):
 	post = Blogpost.query.filter_by(id=post_id).one()

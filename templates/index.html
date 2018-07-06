@@ -46,6 +46,11 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('contact')}}">Contact</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('add')}}">Add</a>
+            </li>
+
           </ul>
         </div>
       </div>
@@ -86,7 +91,7 @@
           </div>
           <hr>
           <div class="post-preview">
-            <a href="post.html">
+            <a href={{url_for('post',post_id=post.id)}}>
               <h2 class="post-title">
                 {{ post.content|safe}}
               </h2>
