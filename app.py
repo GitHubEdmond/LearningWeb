@@ -16,10 +16,12 @@ class Blogpost(db.Model):
 	date_posted = db.Column(db.DateTime)
 	content = db.Column(db.Text)
 
+
 @app.route('/')
 def index():
 	posts = Blogpost.query.all()
 	return	render_template('index.html', posts=posts)
+
 
 @app.route('/about')
 def about():
@@ -40,6 +42,31 @@ def contact():
 def add():
 	return	render_template('add.html')
 
+
+
+@app.route('/application')
+def application():
+	return	render_template('application.html')
+
+
+@app.route('/application/results')
+def results():
+	return	render_template('results.html')
+
+
+
+@app.route('/appost', methods =['POST', 'GET'])
+def appost():
+	#if request.method == 'POST':
+   	#Invest = request.form['Invest']
+      #  print(result)
+	#return "thank you for filling out this form"
+	#return '<h1>DDD:{}</h1>'.format(Invest)
+	return redirect(url_for('results'))
+
+
+
+
 @app.route('/addpost', methods =['POST'])
 def addpost():
 	title = request.form['title']
@@ -53,6 +80,9 @@ def addpost():
 	db.session.commit()
 
 	return	redirect(url_for('index'))
+
+
+
 
 if __name__ == '__main__':
 	app.run(debug=True)
