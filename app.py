@@ -44,9 +44,12 @@ def add():
 
 
 
-@app.route('/application')
+@app.route('/application', methods=["GET", "POST"])
 def application():
-	return	render_template('application.html')
+	Invest = request.form["Invest"]
+	if request.method == "GET":
+		return	render_template('application.html')
+	
 
 
 @app.route('/application/results')
